@@ -1,6 +1,6 @@
 type: dnf
 install:
-  skip-unavailable: true
+  skip-unavailable: false
   packages:
     - acpi
     - acpid
