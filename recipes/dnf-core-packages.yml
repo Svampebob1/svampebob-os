@@ -29,6 +29,7 @@ install:
     - git
     - gnome-calendar
     - gnome-keyring
+    - gnome-desktop
     - grim
     - grimshot
     - gtklock
