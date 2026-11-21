@@ -1,0 +1,35 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
+modules:
+  - type: dnf
+    install:
+      packages:
+        - apt-listbugs
+        - bash-completion
+        - cifs-utils
+        - cliphist
+        - curl
+        - gawk
+        - gdebi
+        - git
+        - glances
+        - htop
+        - iftop
+        - iotop
+        - iputils-tracepath
+        - libunrar5
+        - nala
+        - needrestart
+        - nmap
+        - python3
+        - python-is-python3
+        - rsync
+        - samba
+        - screen
+        - telnet
+        - unattended-upgrades
+        - vim
+        - wget
+        - wtype
+        - zsh
+        - zsh-autosuggestions
