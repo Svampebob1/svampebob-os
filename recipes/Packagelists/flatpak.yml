@@ -3,7 +3,8 @@
 modules:
   - type: default-flatpaks
     configurations:
-      - scope: user
+      - notify: true 
+        scope: system
         install:
           - com.brave.Browser
           - com.discordapp.Discord
