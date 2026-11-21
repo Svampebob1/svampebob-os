@@ -14,8 +14,6 @@ modules:
         - alacritty
         - bash-completion
         - blueman
-        - bluez-libs
-        - bluez-tools
         - brightnessctl
         - cifs-utils
         - cliphist
@@ -44,8 +42,6 @@ modules:
         - libnotify
         - lisgd
         - lxqt-policykit
-        - nautilus-*
-        - neovim
         - network-manager-applet
         - nextcloud-client
         - nm-connection-editor
@@ -66,7 +62,6 @@ modules:
         - sway
         - swayidle
         - syncthing
-        - tlp
         - tmux
         - waybar
         - wget
