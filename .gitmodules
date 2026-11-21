@@ -1,0 +1,3 @@
+[submodule "recipes/Packagelists"]
+	path = recipes/Packagelists
+	url = https://git.pludge.com/HonestMonk/Packagelists.git
