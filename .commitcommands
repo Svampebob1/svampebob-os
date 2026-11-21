@@ -1,1 +1,3 @@
 git push github
+git subtree pull --prefix=recipe/Packagelists \
+    https://git.pludge.com/HonestMonk/Packagelists.git main --squash
