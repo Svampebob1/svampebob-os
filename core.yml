@@ -2,23 +2,25 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
 modules:
   - type: dnf
+    repos:
+      copr:
+        - ehsanj/coprstones
     install:
       skip-unavailable: true
       packages:
+        - SwayNotificationCenter
         - acpi
         - acpid
         - alacritty
-        - autotiling
         - bash-completion
         - blueman
-        - bluez-utils
+        - bluez-libs
+        - bluez-tools
         - brightnessctl
         - cifs-utils
         - cliphist
-        - cpupower
         - cryptsetup
         - curl
-        - dex
         - duf
         - emacs
         - eza
@@ -26,6 +28,7 @@ modules:
         - flatpak
         - foot
         - fprintd
+        - fprintd-pam
         - fzf
         - gawk
         - gcr
@@ -38,20 +41,19 @@ modules:
         - htop
         - jq
         - kitty
-        - libnotify-bin
-        - libpam-fprintd
+        - libnotify
+        - lisgd
         - lxqt-policykit
         - nautilus-*
         - neovim
         - network-manager-applet
+        - nextcloud-client
         - nm-connection-editor
-        - nwg-displays
         - papirus-icon-theme
         - pavucontrol
         - playerctl
         - pulseaudio-utils
         - python3-dbus
-        - python3-gi
         - python3-i3ipc
         - rclone
         - ripgrep
@@ -59,14 +61,12 @@ modules:
         - rsync
         - seahorse
         - slurp
-        - squeekboard
         - sshfs
         - swappy
         - sway
         - swayidle
-        - swaync
-        - syncthing-gtk
-        - tealdeer
+        - syncthing
+        - tlp
         - tmux
         - waybar
         - wget
