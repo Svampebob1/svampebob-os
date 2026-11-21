@@ -1,3 +1,1 @@
-git push github
-git subtree pull --prefix=recipes/Packagelists \
-    https://git.pludge.com/HonestMonk/Packagelists.git main --squash -m "Sync packagelists"
+git subtree pull --prefix=recipes/Packagelists https://git.pludge.com/HonestMonk/Packagelists.git main --squash -m "Sync packagelists"
