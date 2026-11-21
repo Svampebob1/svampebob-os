@@ -5,14 +5,19 @@ modules:
     install:
       packages:
         - bridge-utils
-        - libvirt-clients
-        - libvirt-daemon-system
+        - edk2-ovmf
+        - edk2-ovmf-xen
+        - guestfs-tools
+        - libvirt
+        - libvirt-client
+        - libvirt-client-qemu
         - open-vm-tools
         - open-vm-tools-desktop
-        - ovmf
+        - qemu
         - qemu-kvm
-        - qemu-utils
-        - spice-client-gtk
+        - spice-gtk
+        - spice-gtk-tools
         - spice-vdagent
-        - virtiofsd
+        - virt-install
         - virt-manager
+        - virtiofsd
