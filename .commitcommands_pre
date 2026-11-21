@@ -1,0 +1,2 @@
+bluebuild validate recipes/recipe-bluefin.yml || echo "Validering feilet!" ; exit 2
+bluebuild validate recipes/recipe-bazzite.yml || echo "Validering feilet!" ; exit 2
