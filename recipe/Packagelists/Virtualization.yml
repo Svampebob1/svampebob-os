@@ -1,0 +1,18 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
+modules:
+  - type: dnf
+    install:
+      packages:
+        - bridge-utils
+        - libvirt-clients
+        - libvirt-daemon-system
+        - open-vm-tools
+        - open-vm-tools-desktop
+        - ovmf
+        - qemu-kvm
+        - qemu-utils
+        - spice-client-gtk
+        - spice-vdagent
+        - virtiofsd
+        - virt-manager
