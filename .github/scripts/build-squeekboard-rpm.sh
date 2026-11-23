@@ -1,19 +1,26 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Container-bygg (f.eks. blue-build/GitHub Actions RUN) setter ikke alltid
+# HOME. rpm-makroene (%_topdir, brukt av rpm selv og rpmbuild) avhenger av
+# HOME — uten den havner byggetreet på /rpmbuild i stedet for /root/rpmbuild.
+# Gjør det eksplisitt og likt i alle miljøer.
+export HOME="${HOME:-/root}"
+
 version="1.43.1"
 revision="1.svampebob1"
 
 dnf install -y \
     dnf-plugins-core \
     rpm-build \
-    rpmdevtools \
     curl \
     tar \
     ca-certificates
 
-topdir="/root/rpmbuild"
-rpmdev-setuptree
+topdir="${HOME}/rpmbuild"
+# Opprett byggetreet eksplisitt i stedet for å stole på rpmdev-setuptree,
+# slik at det alltid havner under ${topdir}.
+mkdir -p "${topdir}"/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
 
 # Hent og kontroller den eksakte upstream-versjonen.
 curl -fL \
@@ -164,11 +171,11 @@ rpm -q --specfile "${topdir}/SPECS/squeekboard.spec"
 rpmbuild -ba "${topdir}/SPECS/squeekboard.spec"
 
 shopt -s nullglob
-rpms=(/root/rpmbuild/RPMS/*/squeekboard-[0-9]*.rpm)
+rpms=("${topdir}"/RPMS/*/squeekboard-[0-9]*.rpm)
 
 if ((${#rpms[@]} != 1)); then
     echo "Forventet nøyaktig én squeekboard-RPM, fant ${#rpms[@]}" >&2
-    find /root/rpmbuild/RPMS -type f -name '*.rpm' >&2
+    find "${topdir}/RPMS" -type f -name '*.rpm' >&2
     exit 1
 fi
 
