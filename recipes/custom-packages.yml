@@ -4,4 +4,4 @@ modules:
   - type: dnf
     install:
       packages:
-        - squeekboard-custom.rpm
+        - files/dnf/squeekboard-custom.rpm
