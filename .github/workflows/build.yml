@@ -36,32 +36,9 @@ jobs:
           if-no-files-found: error
           retention-days: 7
 
-  # JOB 2: Henter RPM-en fra job 1 og bygger OS-image-et
-  build-image:
-    needs: build-squeekboard
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Hent repository
-        uses: actions/checkout@v4
-
-      - name: Hent RPM fra byggjobben
-        uses: actions/download-artifact@v4
-        with:
-          name: squeekboard-rpm
-          path: files/dnf
-
-      - name: Kontroller at RPM-en finnes
-        run: test -s files/dnf/squeekboard-custom.rpm
-
-      - name: Bygg OS-image
-        uses: blue-build/github-action@v1
-        with:
-          recipe: recipe-bluefin.yml
-          cosign_private_key: ${{ secrets.COSIGN_PRIVATE_KEY }}
-          skip_checkout: true
   bluebuild:
     name: Build Custom Image
+    needs: build-squeekboard
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -76,6 +53,18 @@ jobs:
           - recipe-bazzite.yml
     steps:
       # the build is fully handled by the reusable github action
+      - name: Hent repository
+        uses: actions/checkout@v4
+
+      - name: Hent RPM fra byggjobben
+        uses: actions/download-artifact@v4
+        with:
+          name: squeekboard-rpm
+          path: files/dnf
+
+      - name: Kontroller at RPM-en finnes
+        run: test -s files/dnf/squeekboard-custom.rpm
+
       - name: Build Custom Image
         uses: blue-build/github-action@v1.14
         with:
