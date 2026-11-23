@@ -35,6 +35,7 @@ modules:
   # Installasjon av core packages
   - from-file: Packagelists/core.yml
   - from-file: Packagelists/flatpak.yml
+  - from-file: /home/oystein/GitProjects/Svampebob-os/recipes/custom-packages.yml
 
   - type: default-flatpaks
     configurations:

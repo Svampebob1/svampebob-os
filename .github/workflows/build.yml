@@ -15,6 +15,51 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
   cancel-in-progress: true
 jobs:
+  # JOB 1: Kjører kompileringen og lager RPM-en
+  build-squeekboard:
+    runs-on: ubuntu-latest
+    container:
+      image: registry.fedoraproject.org/fedora:45
+
+    steps:
+      - name: Hent repository
+        uses: actions/checkout@v4
+
+      - name: Kompiler squeekboard og lag RPM
+        run: bash .github/scripts/build-squeekboard-rpm.sh
+
+      - name: Lagre RPM som artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: squeekboard-rpm
+          path: /tmp/rpms/squeekboard-custom.rpm
+          if-no-files-found: error
+          retention-days: 7
+
+  # JOB 2: Henter RPM-en fra job 1 og bygger OS-image-et
+  build-image:
+    needs: build-squeekboard
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Hent repository
+        uses: actions/checkout@v4
+
+      - name: Hent RPM fra byggjobben
+        uses: actions/download-artifact@v4
+        with:
+          name: squeekboard-rpm
+          path: files/dnf
+
+      - name: Kontroller at RPM-en finnes
+        run: test -s files/dnf/squeekboard-custom.rpm
+
+      - name: Bygg OS-image
+        uses: blue-build/github-action@v1
+        with:
+          recipe: recipe-bluefin.yml
+          cosign_private_key: ${{ secrets.COSIGN_PRIVATE_KEY }}
+          skip_checkout: true
   bluebuild:
     name: Build Custom Image
     runs-on: ubuntu-latest
