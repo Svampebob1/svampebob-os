@@ -23,7 +23,7 @@ jobs:
 
     steps:
       - name: Hent repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Kompiler squeekboard og lag RPM
         run: bash .github/scripts/build-squeekboard-rpm.sh
@@ -54,25 +54,16 @@ jobs:
     steps:
       # the build is fully handled by the reusable github action
       - name: Hent repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Hent RPM fra byggjobben
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: squeekboard-rpm
           path: files/dnf
 
       - name: Kontroller at RPM-en finnes
         run: test -s files/dnf/squeekboard-custom.rpm
-
-      - name: Debug build context
-        run: |
-          echo "PWD: $(pwd)"
-          find files -maxdepth 3 -type f -ls
-          echo "--- .gitignore ---"
-          cat .gitignore || true
-          echo "--- .dockerignore ---"
-          cat .dockerignore || true
 
       - name: Build Custom Image
         uses: blue-build/github-action@v1.14
