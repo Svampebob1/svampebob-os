@@ -23,7 +23,7 @@ jobs:
 
     steps:
       - name: Hent repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Kompiler squeekboard og lag RPM
         run: bash .github/scripts/build-squeekboard-rpm.sh
@@ -54,7 +54,7 @@ jobs:
     steps:
       # the build is fully handled by the reusable github action
       - name: Hent repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Hent RPM fra byggjobben
         uses: actions/download-artifact@v7
