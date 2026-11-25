@@ -46,6 +46,7 @@ modules:
         - network-manager-applet
         - nextcloud-client
         - nm-connection-editor
+        - openssh-server
         - papirus-icon-theme
         - pavucontrol
         - playerctl
