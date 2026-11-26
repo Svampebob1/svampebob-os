@@ -4,7 +4,7 @@ modules:
   - type: default-flatpaks
     configurations:
       - notify: true 
-        scope: system
+        scope: user
         install:
           - com.brave.Browser
           - com.discordapp.Discord
@@ -17,7 +17,6 @@ modules:
           - com.usebottles.bottles
           - io.github.alainm23.planify
           - io.missioncenter.MissionCenter
-          - md.obsidian.Obsidian
           - net.davidotek.pupgui2
           - org.jellyfin.JellyfinDesktop
           - org.signal.Signal
