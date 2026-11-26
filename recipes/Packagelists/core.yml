@@ -33,6 +33,7 @@ modules:
         - git
         - gnome-calendar
         - gnome-keyring
+        - gnome-keyring-pam
         - grim
         - grimshot
         - gtklock
