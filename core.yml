@@ -15,6 +15,7 @@ modules:
         - bash-completion
         - blueman
         - brightnessctl
+        - btop
         - cifs-utils
         - cliphist
         - cryptsetup
